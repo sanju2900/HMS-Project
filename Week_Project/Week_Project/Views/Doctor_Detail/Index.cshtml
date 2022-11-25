@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Week_Project.Models.Doctor_Detail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body>
+
+<h1 style="padding-left:380px;color:brown">Doctor List</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add Doctor</a>
+</p>
+<table class="table">
+    <thead class="table-dark">
+        <tr class="table-active">
+            <th>
+                @Html.DisplayNameFor(model => model.Dr_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dr_pofile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dr_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.begin_time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.end_time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dr_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dr_pofile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dr_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.begin_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.end_time)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Dr_id"><i class="bi bi-pencil-square"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.Dr_id"><i class="bi bi-ticket-detailed-fill"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Dr_id"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
